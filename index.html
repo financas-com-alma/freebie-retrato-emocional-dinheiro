@@ -9,18 +9,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cream: #F4EFE6;
-  --cream-soft: #F8F4EC;
-  --cream-card: #FFFFFF;
-  --highlight: #EFE6D3;
-  --gold: #7A5B43;
-  --gold-soft: #8A9670;
-  --ink: #2C3B2E;
-  --muted: rgba(44,59,46,0.62);
-  --border: rgba(122,91,67,0.18);
-  --serif: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-  --sans: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+--cream: #F4EFE6;
+--cream-soft: #F8F4EC;
+--cream-card: #FFFFFF;
+--highlight: #EFE6D3;
+--gold: #7A5B43;
+--gold-soft: #8A9670;
+--ink: #2C3B2E;
+--muted: rgba(44,59,46,0.62);
+--border: rgba(122,91,67,0.18);
+--error: #B23A3A;
+--serif: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+--sans: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+--ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -33,30 +34,31 @@ html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);line-
 .progress-fill{height:100%;background:var(--gold);transition:width 400ms var(--ease)}
 
 .eyebrow{
-  font-family:var(--sans);
-  font-size:12px;letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--gold);font-weight:600;margin-bottom:28px;
+font-family:var(--sans);
+font-size:12px;letter-spacing:0.22em;text-transform:uppercase;
+color:var(--gold);font-weight:600;margin-bottom:28px;
 }
 h1.hero{
-  font-family:var(--serif);font-weight:600;
-  font-size:clamp(32px, 5.6vw, 50px);line-height:1.14;letter-spacing:-0.005em;
-  margin-bottom:24px;
+font-family:var(--serif);font-weight:600;
+font-size:clamp(32px, 5.6vw, 50px);line-height:1.14;letter-spacing:-0.005em;
+margin-bottom:24px;
 }
 h1.hero em{font-style:normal;color:var(--gold);font-weight:600}
 p.lead{
-  font-family:var(--sans);font-weight:400;
-  font-size:clamp(17px, 2.1vw, 20px);line-height:1.6;
-  color:var(--ink);opacity:0.82;margin-bottom:52px;max-width:580px;
+font-family:var(--sans);font-weight:400;
+font-size:clamp(17px, 2.1vw, 20px);line-height:1.6;
+color:var(--ink);opacity:0.82;margin-bottom:52px;max-width:580px;
 }
 
 .btn{
-  display:inline-flex;align-items:center;gap:12px;
-  background:var(--ink);color:var(--cream);
-  padding:18px 32px;border-radius:6px;border:none;cursor:pointer;
-  font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:0.01em;
-  transition:background 200ms var(--ease), transform 200ms var(--ease);
+display:inline-flex;align-items:center;gap:12px;
+background:var(--ink);color:var(--cream);
+padding:18px 32px;border-radius:6px;border:none;cursor:pointer;
+font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:0.01em;
+transition:background 200ms var(--ease), transform 200ms var(--ease);
 }
 .btn:hover{background:var(--gold);transform:translateY(-1px)}
+.btn:disabled{opacity:0.6;cursor:default;transform:none}
 .btn .arrow{transition:transform 200ms var(--ease);display:inline-block}
 .btn:hover .arrow{transform:translateX(4px)}
 
@@ -69,49 +71,66 @@ p.lead{
 @keyframes fadeOut{to{opacity:0;transform:translateY(-8px)}}
 
 .q-index{
-  font-size:12px;letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--gold);font-weight:600;margin-bottom:20px;
+font-size:12px;letter-spacing:0.18em;text-transform:uppercase;
+color:var(--gold);font-weight:600;margin-bottom:20px;
 }
 .q-statement{
-  font-family:var(--serif);font-weight:500;
-  font-size:clamp(22px, 3.4vw, 30px);line-height:1.35;
-  margin-bottom:48px;max-width:600px;
+font-family:var(--serif);font-weight:500;
+font-size:clamp(22px, 3.4vw, 30px);line-height:1.35;
+margin-bottom:48px;max-width:600px;
 }
 
 .scale{display:flex;gap:12px;flex-wrap:wrap}
 .scale-btn{
-  flex:1 1 0;min-width:64px;
-  background:var(--cream-soft);border:1.5px solid var(--border);border-radius:6px;
-  padding:22px 10px 16px;text-align:center;cursor:pointer;
-  transition:border-color 200ms var(--ease), background 200ms var(--ease), transform 150ms var(--ease);
+flex:1 1 0;min-width:64px;
+background:var(--cream-soft);border:1.5px solid var(--border);border-radius:6px;
+padding:22px 10px 16px;text-align:center;cursor:pointer;
+transition:border-color 200ms var(--ease), background 200ms var(--ease), transform 150ms var(--ease);
 }
 .scale-btn:hover{border-color:var(--gold);transform:translateY(-2px)}
 .scale-num{
-  display:block;font-family:var(--serif);font-size:26px;font-weight:600;color:var(--ink);margin-bottom:8px;
+display:block;font-family:var(--serif);font-size:26px;font-weight:600;color:var(--ink);margin-bottom:8px;
 }
 .scale-label{display:block;font-size:11px;color:var(--muted);letter-spacing:0.04em}
 .scale-hint{display:flex;justify-content:space-between;margin-top:14px;font-size:12.5px;color:var(--muted)}
 
+.gate-form{display:flex;flex-direction:column;gap:22px;max-width:440px;margin-top:8px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label{
+font-size:12px;letter-spacing:0.1em;text-transform:uppercase;
+color:var(--gold);font-weight:600;
+}
+.field input{
+font-family:var(--sans);font-size:16px;color:var(--ink);
+background:var(--cream-soft);border:1.5px solid var(--border);border-radius:6px;
+padding:14px 16px;outline:none;width:100%;
+transition:border-color 200ms var(--ease);
+}
+.field input:focus{border-color:var(--gold)}
+.field input.invalid{border-color:var(--error)}
+.gate-error{font-size:13.5px;color:var(--error);display:none}
+.gate-note{font-size:12.5px;color:var(--muted);margin-top:-6px}
+
 .output{margin-top:8px;display:flex;flex-direction:column;gap:14px}
 .output-card{
-  background:var(--cream-card);border:1px solid var(--border);border-radius:8px;
-  padding:24px 28px;
-  opacity:0;transform:translateY(16px);
-  animation:reveal 500ms var(--ease) forwards;
+background:var(--cream-card);border:1px solid var(--border);border-radius:8px;
+padding:24px 28px;
+opacity:0;transform:translateY(16px);
+animation:reveal 500ms var(--ease) forwards;
 }
 .output-card:nth-child(1){animation-delay:80ms}
 .output-card:nth-child(2){animation-delay:200ms}
 .output-card:nth-child(3){animation-delay:320ms}
 .output-card:nth-child(4){animation-delay:440ms}
 .output-card h3{
-  font-family:var(--serif);font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:10px;
+font-family:var(--serif);font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+color:var(--gold);margin-bottom:10px;
 }
 .output-card p{font-size:15.5px;color:var(--ink);opacity:0.88;line-height:1.6}
 @keyframes reveal{to{opacity:1;transform:translateY(0)}}
 
 .foot{
-  margin-top:96px;padding-top:48px;border-top:1px solid var(--border);text-align:center;
+margin-top:96px;padding-top:48px;border-top:1px solid var(--border);text-align:center;
 }
 .foot-label{font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:600}
 .foot-body{font-family:var(--serif);font-size:19px;font-weight:500;line-height:1.55;color:var(--ink);opacity:0.86;margin-bottom:28px;max-width:520px;margin-inline:auto}
@@ -123,210 +142,314 @@ p.lead{
 <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
 <div class="wrap" id="app"></div>
 
+<iframe name="stSubmitFrame" style="display:none" aria-hidden="true"></iframe>
+<form id="stForm" action="https://systeme.io/embedded/43675738/subscription" method="post" target="stSubmitFrame" style="display:none">
+<input type="text" name="first_name" id="stFirstName">
+<input type="text" name="email" id="stEmail">
+<input type="text" name="phone_number" id="stPhone">
+</form>
+
 <script>
 const STATEMENTS = [
-  { id: 'gastadora', texto: 'Gasto dinheiro porque eu mereço aliviar o stress e para me sentir bem.' },
-  { id: 'controladora', texto: 'Tenho medo de perder o controlo financeiro. Gosto de planear tudo e evito riscos.' },
-  { id: 'salvadora', texto: 'Costumo ajudar financeiramente outras pessoas, mesmo quando isso me prejudica.' },
-  { id: 'acumuladora', texto: 'Tenho dificuldade em gastar, mesmo quando posso — e em desfazer-me do que já não uso.' },
-  { id: 'sonhadora', texto: 'Tenho muitas ideias, mas dificuldade em pôr planos financeiros em prática.' },
-  { id: 'provedora', texto: 'Sinto que é da minha responsabilidade resolver os problemas financeiros dos outros.' }
+{ id: 'gastadora', texto: 'Gasto dinheiro porque eu mereço aliviar o stress e para me sentir bem.' },
+{ id: 'controladora', texto: 'Tenho medo de perder o controlo financeiro. Gosto de planear tudo e evito riscos.' },
+{ id: 'salvadora', texto: 'Costumo ajudar financeiramente outras pessoas, mesmo quando isso me prejudica.' },
+{ id: 'acumuladora', texto: 'Tenho dificuldade em gastar, mesmo quando posso — e em desfazer-me do que já não uso.' },
+{ id: 'sonhadora', texto: 'Tenho muitas ideias, mas dificuldade em pôr planos financeiros em prática.' },
+{ id: 'provedora', texto: 'Sinto que é da minha responsabilidade resolver os problemas financeiros dos outros.' }
 ];
 
 const ARCHETYPES = {
-  gastadora: {
-    nome: 'Gastadora Emocional',
-    emocao: 'Alegria e ansiedade',
-    crenca: '"Eu mereço, porque sofri demais."',
-    virtude: 'Autocontrolo e propósito',
-    lead: 'Gastas para sentir, no momento, que já não falta nada. Não é fraqueza — é a forma que encontraste de aliviar um peso antigo. A pergunta não é parar de gastar. É perceber o que estás mesmo a comprar.',
-    revela: 'A tua emoção dominante é a alegria misturada com ansiedade. Compras para te sentires viva, aceite, em paz — mesmo que só por um momento.',
-    crencaTexto: 'Algures aprendeste que merecias, porque sofreste demais. E é verdade. Só que o dinheiro não consegue pagar essa dívida sozinho.',
-    virtudeTexto: 'Autocontrolo e propósito. Não para deixares de te presentear — para escolheres quando o fazes, em vez de ser a emoção a decidir por ti.'
-  },
-  controladora: {
-    nome: 'Controladora',
-    emocao: 'Medo',
-    crenca: '"Se perco o controlo, perco tudo."',
-    virtude: 'Confiança e flexibilidade',
-    lead: 'Planeias tudo. Evitas riscos. Por fora, parece confiança. Por dentro, é medo — medo de que, se largares o controlo por um segundo, tudo desmorone.',
-    revela: 'A tua emoção dominante é o medo. Cada decisão passa primeiro por essa pergunta silenciosa: e se correr mal?',
-    crencaTexto: '"Se perco o controlo, perco tudo." É uma crença que te protegeu — mas também te cansa.',
-    virtudeTexto: 'Confiança e flexibilidade. Não significa abandonar o plano. Significa confiar que também sobrevives ao que não planeaste.'
-  },
-  salvadora: {
-    nome: 'Salvadora',
-    emocao: 'Culpa',
-    crenca: '"Sou boa quando cuido dos outros."',
-    virtude: 'Autocuidado e limite',
-    lead: 'Ajudas primeiro, pensas em ti depois — se sobrar espaço. E raramente sobra.',
-    revela: 'A tua emoção dominante é a culpa. Cuidar dos outros é, para ti, a forma mais segura de te sentires boa.',
-    crencaTexto: '"Sou boa quando cuido dos outros." Mas ninguém te perguntou quem cuida de ti.',
-    virtudeTexto: 'Autocuidado e limite. Um limite não é egoísmo — é a condição para continuares a dar sem te esvaziares.'
-  },
-  acumuladora: {
-    nome: 'Acumuladora',
-    emocao: 'Insegurança',
-    crenca: '"Um dia posso precisar."',
-    virtude: 'Generosidade e fluxo',
-    lead: 'Guardas. Adias o gasto mesmo quando podes. Não é avareza — é a memória de um tempo em que o suficiente não era garantido.',
-    revela: 'A tua emoção dominante é a insegurança. "Um dia posso precisar" governa mais decisões do que imaginas.',
-    crencaTexto: 'A escassez aprendeu-se cedo. E o que se aprendeu cedo custa a desaprender — mas desaprende-se.',
-    virtudeTexto: 'Generosidade e fluxo. Deixar o dinheiro circular, incluindo para ti, sem que isso signifique perigo.'
-  },
-  sonhadora: {
-    nome: 'Sonhadora',
-    emocao: 'Esperança',
-    crenca: '"Uma hora vai dar certo."',
-    virtude: 'Disciplina e realismo',
-    lead: 'Tens ideias a mais e planos a menos postos em prática. "Uma hora vai dar certo" é a frase que te embala e também te trava.',
-    revela: 'A tua emoção dominante é a esperança — sem ainda ter aterrado em ação.',
-    crencaTexto: '"Uma hora vai dar certo." É bonito acreditar. É mais forte agir enquanto acreditas.',
-    virtudeTexto: 'Disciplina e realismo. Não para deixares de sonhar — para dares ao sonho um prazo e um primeiro passo.'
-  },
-  provedora: {
-    nome: 'Provedora',
-    emocao: 'Responsabilidade',
-    crenca: '"Preciso de dar conta de tudo."',
-    virtude: 'Delegar e confiar',
-    lead: 'Carregas o peso financeiro de todos, como se fosse sempre a tua vez de resolver. Achas que é amor. Também é cansaço.',
-    revela: 'A tua emoção dominante é a responsabilidade. Sentes que, se não fores tu a dar conta, ninguém vai.',
-    crencaTexto: '"Preciso de dar conta de tudo." Uma crença que provavelmente começou muito antes de teres escolha.',
-    virtudeTexto: 'Delegar e confiar. Parte da tua força está, também, em deixar espaço para os outros segurarem algo.'
-  }
+gastadora: {
+nome: 'Gastadora Emocional',
+emocao: 'Alegria e ansiedade',
+crenca: '"Eu mereço, porque sofri demais."',
+virtude: 'Autocontrolo e propósito',
+lead: 'Gastas para sentir, no momento, que já não falta nada. Não é fraqueza — é a forma que encontraste de aliviar um peso antigo. A pergunta não é parar de gastar. É perceber o que estás mesmo a comprar.',
+revela: 'A tua emoção dominante é a alegria misturada com ansiedade. Compras para te sentires viva, aceite, em paz — mesmo que só por um momento.',
+crencaTexto: 'Algures aprendeste que merecias, porque sofreste demais. E é verdade. Só que o dinheiro não consegue pagar essa dívida sozinho.',
+virtudeTexto: 'Autocontrolo e propósito. Não para deixares de te presentear — para escolheres quando o fazes, em vez de ser a emoção a decidir por ti.'
+},
+controladora: {
+nome: 'Controladora',
+emocao: 'Medo',
+crenca: '"Se perco o controlo, perco tudo."',
+virtude: 'Confiança e flexibilidade',
+lead: 'Planeias tudo. Evitas riscos. Por fora, parece confiança. Por dentro, é medo — medo de que, se largares o controlo por um segundo, tudo desmorone.',
+revela: 'A tua emoção dominante é o medo. Cada decisão passa primeiro por essa pergunta silenciosa: e se correr mal?',
+crencaTexto: '"Se perco o controlo, perco tudo." É uma crença que te protegeu — mas também te cansa.',
+virtudeTexto: 'Confiança e flexibilidade. Não significa abandonar o plano. Significa confiar que também sobrevives ao que não planeaste.'
+},
+salvadora: {
+nome: 'Salvadora',
+emocao: 'Culpa',
+crenca: '"Sou boa quando cuido dos outros."',
+virtude: 'Autocuidado e limite',
+lead: 'Ajudas primeiro, pensas em ti depois — se sobrar espaço. E raramente sobra.',
+revela: 'A tua emoção dominante é a culpa. Cuidar dos outros é, para ti, a forma mais segura de te sentires boa.',
+crencaTexto: '"Sou boa quando cuido dos outros." Mas ninguém te perguntou quem cuida de ti.',
+virtudeTexto: 'Autocuidado e limite. Um limite não é egoísmo — é a condição para continuares a dar sem te esvaziares.'
+},
+acumuladora: {
+nome: 'Acumuladora',
+emocao: 'Insegurança',
+crenca: '"Um dia posso precisar."',
+virtude: 'Generosidade e fluxo',
+lead: 'Guardas. Adias o gasto mesmo quando podes. Não é avareza — é a memória de um tempo em que o suficiente não era garantido.',
+revela: 'A tua emoção dominante é a insegurança. "Um dia posso precisar" governa mais decisões do que imaginas.',
+crencaTexto: 'A escassez aprendeu-se cedo. E o que se aprendeu cedo custa a desaprender — mas desaprende-se.',
+virtudeTexto: 'Generosidade e fluxo. Deixar o dinheiro circular, incluindo para ti, sem que isso signifique perigo.'
+},
+sonhadora: {
+nome: 'Sonhadora',
+emocao: 'Esperança',
+crenca: '"Uma hora vai dar certo."',
+virtude: 'Disciplina e realismo',
+lead: 'Tens ideias a mais e planos a menos postos em prática. "Uma hora vai dar certo" é a frase que te embala e também te trava.',
+revela: 'A tua emoção dominante é a esperança — sem ainda ter aterrado em ação.',
+crencaTexto: '"Uma hora vai dar certo." É bonito acreditar. É mais forte agir enquanto acreditas.',
+virtudeTexto: 'Disciplina e realismo. Não para deixares de sonhar — para dares ao sonho um prazo e um primeiro passo.'
+},
+provedora: {
+nome: 'Provedora',
+emocao: 'Responsabilidade',
+crenca: '"Preciso de dar conta de tudo."',
+virtude: 'Delegar e confiar',
+lead: 'Carregas o peso financeiro de todos, como se fosse sempre a tua vez de resolver. Achas que é amor. Também é cansaço.',
+revela: 'A tua emoção dominante é a responsabilidade. Sentes que, se não fores tu a dar conta, ninguém vai.',
+crencaTexto: '"Preciso de dar conta de tudo." Uma crença que provavelmente começou muito antes de teres escolha.',
+virtudeTexto: 'Delegar e confiar. Parte da tua força está, também, em deixar espaço para os outros segurarem algo.'
+}
 };
 
 const STORAGE_KEY = 'retratoEmocionalDinheiro';
 
 let state = {
-  step: 'hero', // hero | q0..q5 | result
-  scores: {}
+step: 'hero', // hero | q0..q5 | gate | result
+scores: {},
+lead: { nome: '', email: '', telefone: '' }
 };
 
 const saved = localStorage.getItem(STORAGE_KEY);
 if (saved) {
-  try { state.scores = JSON.parse(saved).scores || {}; } catch(e) {}
+try {
+const parsed = JSON.parse(saved);
+state.scores = parsed.scores || {};
+state.lead = parsed.lead || state.lead;
+} catch(e) {}
 }
 
 const app = document.getElementById('app');
 const progressFill = document.getElementById('progressFill');
 
 function save() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
 function setProgress(pct) {
-  progressFill.style.width = pct + '%';
+progressFill.style.width = pct + '%';
 }
 
 function render() {
-  if (state.step === 'hero') { renderHero(); setProgress(0); return; }
-  if (state.step === 'result') { renderResult(); setProgress(100); return; }
-  const qIndex = parseInt(state.step.replace('q', ''), 10);
-  renderQuestion(qIndex);
-  setProgress(Math.round((qIndex / STATEMENTS.length) * 100));
+if (state.step === 'hero') { renderHero(); setProgress(0); return; }
+if (state.step === 'gate') { renderGate(); setProgress(96); return; }
+if (state.step === 'result') { renderResult(); setProgress(100); return; }
+const qIndex = parseInt(state.step.replace('q', ''), 10);
+renderQuestion(qIndex);
+setProgress(Math.round((qIndex / STATEMENTS.length) * 100));
 }
 
 function transitionTo(nextStep) {
-  const current = app.querySelector('.screen');
-  if (current) {
-    current.classList.add('leaving');
-    setTimeout(() => { state.step = nextStep; render(); }, 200);
-  } else {
-    state.step = nextStep;
-    render();
-  }
+const current = app.querySelector('.screen');
+if (current) {
+current.classList.add('leaving');
+setTimeout(() => { state.step = nextStep; render(); }, 200);
+} else {
+state.step = nextStep;
+render();
+}
 }
 
 function renderHero() {
-  app.innerHTML = `
-    <div class="screen">
-      <div class="eyebrow">Finanças com Alma</div>
-      <h1 class="hero">O teu <em>Retrato Emocional</em> do Dinheiro</h1>
-      <p class="lead">Não é sobre gastares mal. É sobre a emoção que gasta por ti. Seis afirmações. Dois minutos. Um espelho do padrão que decide antes dos números.</p>
-      <button class="btn" id="startBtn">Começar o retrato <span class="arrow">→</span></button>
-    </div>
-  `;
-  document.getElementById('startBtn').addEventListener('click', () => transitionTo('q0'));
+app.innerHTML = `
+<div class="screen">
+<div class="eyebrow">Finanças com Alma</div>
+<h1 class="hero">O teu <em>Retrato Emocional</em> do Dinheiro</h1>
+<p class="lead">Não é sobre gastares mal. É sobre a emoção que gasta por ti. Seis afirmações. Dois minutos. Um espelho do padrão que decide antes dos números.</p>
+<button class="btn" id="startBtn">Começar o retrato <span class="arrow">→</span></button>
+</div>
+`;
+document.getElementById('startBtn').addEventListener('click', () => transitionTo('q0'));
 }
 
 function renderQuestion(index) {
-  const s = STATEMENTS[index];
-  app.innerHTML = `
-    <div class="screen">
-      <div class="q-index">Pergunta ${index + 1} de ${STATEMENTS.length}</div>
-      <p class="q-statement">"${s.texto}"</p>
-      <div class="scale">
-        ${[1,2,3,4,5].map(n => `<div class="scale-btn" data-value="${n}"><span class="scale-num">${n}</span></div>`).join('')}
-      </div>
-      <div class="scale-hint"><span>pouco a ver comigo</span><span>é mesmo assim</span></div>
-    </div>
-  `;
-  app.querySelectorAll('.scale-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      state.scores[s.id] = parseInt(btn.dataset.value, 10);
-      save();
-      const next = index + 1;
-      if (next < STATEMENTS.length) {
-        transitionTo('q' + next);
-      } else {
-        transitionTo('result');
-      }
-    });
-  });
+const s = STATEMENTS[index];
+app.innerHTML = `
+<div class="screen">
+<div class="q-index">Pergunta ${index + 1} de ${STATEMENTS.length}</div>
+<p class="q-statement">"${s.texto}"</p>
+<div class="scale">
+${[1,2,3,4,5].map(n => `<div class="scale-btn" data-value="${n}"><span class="scale-num">${n}</span></div>`).join('')}
+</div>
+<div class="scale-hint"><span>pouco a ver comigo</span><span>é mesmo assim</span></div>
+</div>
+`;
+app.querySelectorAll('.scale-btn').forEach(btn => {
+btn.addEventListener('click', () => {
+state.scores[s.id] = parseInt(btn.dataset.value, 10);
+save();
+const next = index + 1;
+if (next < STATEMENTS.length) {
+transitionTo('q' + next);
+} else {
+transitionTo('gate');
+}
+});
+});
+}
+
+function normalizePhone(raw) {
+let v = (raw || '').trim().replace(/[\s\-\(\)]/g, '');
+if (v.startsWith('00')) v = '+' + v.slice(2);
+if (!v.startsWith('+')) {
+const digits = v.replace(/\D/g, '');
+if (digits.length === 9) {
+v = '+351' + digits;
+} else {
+v = '+' + digits;
+}
+}
+return v;
+}
+
+function submitToSystemIo(nome, email, telefone) {
+try {
+document.getElementById('stFirstName').value = nome;
+document.getElementById('stEmail').value = email;
+document.getElementById('stPhone').value = normalizePhone(telefone);
+document.getElementById('stForm').submit();
+} catch (e) {
+// nunca bloquear a experiência por causa disto
+}
+}
+
+function renderGate() {
+app.innerHTML = `
+<div class="screen">
+<div class="eyebrow">Quase lá</div>
+<h1 class="hero">Para onde envio o teu <em>retrato</em>?</h1>
+<p class="lead">Preenche os teus dados para veres o teu arquétipo emocional do dinheiro.</p>
+<form class="gate-form" id="gateForm" novalidate>
+<div class="field">
+<label for="gateNome">Nome</label>
+<input type="text" id="gateNome" name="gateNome" autocomplete="name" value="${state.lead.nome || ''}">
+</div>
+<div class="field">
+<label for="gateEmail">Email</label>
+<input type="email" id="gateEmail" name="gateEmail" autocomplete="email" value="${state.lead.email || ''}">
+</div>
+<div class="field">
+<label for="gateTelefone">WhatsApp</label>
+<input type="tel" id="gateTelefone" name="gateTelefone" autocomplete="tel" placeholder="912 345 678" value="${state.lead.telefone || ''}">
+<span class="gate-note">Só os 9 dígitos, ou já com indicativo do país.</span>
+</div>
+<div class="gate-error" id="gateError"></div>
+<button type="submit" class="btn" id="gateSubmit">Ver o meu retrato <span class="arrow">→</span></button>
+</form>
+</div>
+`;
+
+const form = document.getElementById('gateForm');
+const errorBox = document.getElementById('gateError');
+const nomeInput = document.getElementById('gateNome');
+const emailInput = document.getElementById('gateEmail');
+const telefoneInput = document.getElementById('gateTelefone');
+
+form.addEventListener('submit', (ev) => {
+ev.preventDefault();
+
+const nome = nomeInput.value.trim();
+const email = emailInput.value.trim();
+const telefone = telefoneInput.value.trim();
+
+[nomeInput, emailInput, telefoneInput].forEach(el => el.classList.remove('invalid'));
+errorBox.style.display = 'none';
+
+const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+const telefoneDigitos = telefone.replace(/\D/g, '').length;
+
+let mensagens = [];
+if (!nome) { nomeInput.classList.add('invalid'); mensagens.push('o teu nome'); }
+if (!email || !emailValido) { emailInput.classList.add('invalid'); mensagens.push('um email válido'); }
+if (!telefone || telefoneDigitos < 9) { telefoneInput.classList.add('invalid'); mensagens.push('o teu WhatsApp'); }
+
+if (mensagens.length > 0) {
+errorBox.textContent = 'Falta preencher ' + mensagens.join(', ') + '.';
+errorBox.style.display = 'block';
+return;
+}
+
+state.lead = { nome, email, telefone };
+save();
+
+// o envio para o System.io corre em segundo plano e nunca bloqueia a transição
+submitToSystemIo(nome, email, telefone);
+
+transitionTo('result');
+});
 }
 
 function computeResult() {
-  const entries = Object.entries(state.scores);
-  if (entries.length === 0) return { dominant: 'gastadora', shadow: 'controladora' };
-  let dominant = entries[0], shadow = entries[0];
-  entries.forEach(e => {
-    if (e[1] > dominant[1]) dominant = e;
-    if (e[1] < shadow[1]) shadow = e;
-  });
-  return { dominant: dominant[0], shadow: shadow[0] };
+const entries = Object.entries(state.scores);
+if (entries.length === 0) return { dominant: 'gastadora', shadow: 'controladora' };
+let dominant = entries[0], shadow = entries[0];
+entries.forEach(e => {
+if (e[1] > dominant[1]) dominant = e;
+if (e[1] < shadow[1]) shadow = e;
+});
+return { dominant: dominant[0], shadow: shadow[0] };
 }
 
 function renderResult() {
-  const { dominant, shadow } = computeResult();
-  const a = ARCHETYPES[dominant];
-  const s = ARCHETYPES[shadow];
-  app.innerHTML = `
-    <div class="screen">
-      <div class="eyebrow">O teu arquétipo</div>
-      <h1 class="hero">És a <em>${a.nome}</em></h1>
-      <p class="lead">${a.lead}</p>
-      <div class="output">
-        <div class="output-card">
-          <h3>O que isto revela</h3>
-          <p>${a.revela}</p>
-        </div>
-        <div class="output-card">
-          <h3>A crença que carregas</h3>
-          <p>${a.crencaTexto}</p>
-        </div>
-        <div class="output-card">
-          <h3>A virtude a construir</h3>
-          <p>${a.virtudeTexto}</p>
-        </div>
-        <div class="output-card">
-          <h3>O teu arquétipo sombra</h3>
-          <p>A nota mais baixa foi a <strong>${s.nome}</strong>. Não precisas de trabalhar nele agora — mas repara: é exactamente o oposto do que já vives bem. Às vezes é aí que está o equilíbrio que falta.</p>
-        </div>
-      </div>
-      <footer class="foot">
-        <div class="foot-label">Próximo passo</div>
-        <p class="foot-body">Este retrato é o ponto de partida. Se queres perceber como este arquétipo influencia as tuas decisões financeiras — e o que fazer a partir daqui — agenda a tua Sessão Estratégica de Clareza Financeira.</p>
-        <a class="btn btn-outline" href="https://calendly.com/madalenagoncalves-mg/sessao-estrategica">Quero a minha Sessão Estratégica <span class="arrow">→</span></a>
-      </footer>
-      <button class="restart" id="restartBtn">Refazer o retrato</button>
-    </div>
-  `;
-  document.getElementById('restartBtn').addEventListener('click', () => {
-    state = { step: 'hero', scores: {} };
-    save();
-    transitionTo('hero');
-  });
+const { dominant, shadow } = computeResult();
+const a = ARCHETYPES[dominant];
+const s = ARCHETYPES[shadow];
+app.innerHTML = `
+<div class="screen">
+<div class="eyebrow">O teu arquétipo</div>
+<h1 class="hero">És a <em>${a.nome}</em></h1>
+<p class="lead">${a.lead}</p>
+<div class="output">
+<div class="output-card">
+<h3>O que isto revela</h3>
+<p>${a.revela}</p>
+</div>
+<div class="output-card">
+<h3>A crença que carregas</h3>
+<p>${a.crencaTexto}</p>
+</div>
+<div class="output-card">
+<h3>A virtude a construir</h3>
+<p>${a.virtudeTexto}</p>
+</div>
+<div class="output-card">
+<h3>O teu arquétipo sombra</h3>
+<p>A nota mais baixa foi a <strong>${s.nome}</strong>. Não precisas de trabalhar nele agora — mas repara: é exactamente o oposto do que já vives bem. Às vezes é aí que está o equilíbrio que falta.</p>
+</div>
+</div>
+<footer class="foot">
+<div class="foot-label">Próximo passo</div>
+<p class="foot-body">Este retrato é o ponto de partida. Se queres perceber como este arquétipo influencia as tuas decisões financeiras — e o que fazer a partir daqui — agenda a tua Sessão Estratégica de Clareza Financeira.</p>
+<a class="btn btn-outline" href="https://www.madafinancas.pt/sessao-estrategica-b4987a3b">Quero a minha Sessão Estratégica <span class="arrow">→</span></a>
+</footer>
+<button class="restart" id="restartBtn">Refazer o retrato</button>
+</div>
+`;
+document.getElementById('restartBtn').addEventListener('click', () => {
+state = { step: 'hero', scores: {}, lead: { nome: '', email: '', telefone: '' } };
+save();
+transitionTo('hero');
+});
 }
 
 render();
