@@ -159,6 +159,7 @@ margin-top:96px;padding-top:48px;border-top:1px solid var(--border);text-align:c
 <input type="text" name="first_name" id="stFirstName">
 <input type="text" name="email" id="stEmail">
 <input type="text" name="phone_number" id="stPhone">
+<input type="text" name="arquetipo_financeiro" id="stArquetipo">
 </form>
 
 <script>
@@ -334,11 +335,12 @@ v = '+' + digits;
 return v;
 }
 
-function submitToSystemIo(nome, email, telefone) {
+function submitToSystemIo(nome, email, telefone, arquetipo) {
 try {
 document.getElementById('stFirstName').value = nome;
 document.getElementById('stEmail').value = email;
 document.getElementById('stPhone').value = normalizePhone(telefone);
+document.getElementById('stArquetipo').value = arquetipo || '';
 document.getElementById('stForm').submit();
 } catch (e) {
 // nunca bloquear a experiência por causa disto
@@ -412,7 +414,9 @@ state.lead = { nome, email, telefone, consent };
 save();
 
 // o envio para o System.io corre em segundo plano e nunca bloqueia a transição
-submitToSystemIo(nome, email, telefone);
+const { dominant } = computeResult();
+const arquetipoNome = ARCHETYPES[dominant] ? ARCHETYPES[dominant].nome : '';
+submitToSystemIo(nome, email, telefone, arquetipoNome);
 
 transitionTo('result');
 });
