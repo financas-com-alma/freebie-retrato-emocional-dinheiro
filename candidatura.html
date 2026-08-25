@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidatura à Sessão Estratégica de Clareza Financeira — Finanças com Alma</title>
+<style>
+:root{
+  --verde:#123f3e;
+  --verde-escuro:#0b2f2f;
+  --dourado:#776041;
+  --dourado-claro:#b79e7c;
+  --marfim:#f7f2e8;
+  --branco:#ffffff;
+  --texto:#173a39;
+  --muted:#6f706a;
+  --linha:rgba(18,63,62,.14);
+  --erro:#a13f3f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--marfim);color:var(--texto);font-family:Arial,Helvetica,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{text-decoration:none}
+
+.wrap{max-width:720px;margin:0 auto;padding:72px 24px 120px}
+@media(max-width:640px){.wrap{padding:48px 18px 90px}}
+
+.logo{display:block;height:60px;width:auto;margin-bottom:32px;object-fit:contain}
+@media(max-width:640px){.logo{height:48px;margin-bottom:24px}}
+
+.kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:16px;color:var(--dourado);
+  font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+}
+.kicker:before{content:"";width:22px;height:1px;background:var(--dourado)}
+
+h1{
+  color:var(--verde-escuro);
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:500;letter-spacing:-.03em;
+  font-size:clamp(30px,5vw,44px);line-height:1.08;
+  margin-bottom:20px;max-width:620px;
+}
+h1 em{font-style:normal;color:var(--dourado)}
+
+p.lead{font-size:16.5px;color:var(--texto);opacity:.85;max-width:560px;margin-bottom:52px}
+
+.card{background:var(--branco);border:1px solid var(--linha);box-shadow:0 20px 60px rgba(16,53,52,.08)}
+
+section.group{padding:36px 32px;border-bottom:1px solid var(--linha)}
+section.group:last-of-type{border-bottom:none}
+@media(max-width:640px){section.group{padding:28px 20px}}
+
+.group h2{
+  font-family:Georgia,"Times New Roman",serif;font-weight:500;
+  color:var(--verde-escuro);font-size:21px;margin-bottom:6px;letter-spacing:-.01em;
+}
+.group .group-note{font-size:13.5px;color:var(--muted);margin-bottom:24px}
+.group h2 + .group-note{margin-top:0}
+.group h2:last-child{margin-bottom:24px}
+
+.field{margin-bottom:22px}
+.field:last-child{margin-bottom:0}
+.field label{
+  display:block;font-size:13px;font-weight:700;color:var(--verde-escuro);
+  margin-bottom:8px;letter-spacing:.01em;
+}
+.field label .opt{font-weight:400;color:var(--muted);text-transform:none;letter-spacing:0}
+.field label .req{color:var(--dourado);margin-left:2px}
+
+.field input[type="text"],
+.field input[type="email"],
+.field textarea{
+  width:100%;font-family:inherit;font-size:15px;color:var(--texto);
+  background:var(--marfim);border:1.5px solid var(--linha);border-radius:4px;
+  padding:13px 14px;outline:none;transition:border-color .2s;
+}
+.field input[type="text"]:focus,
+.field input[type="email"]:focus,
+.field textarea:focus{border-color:var(--dourado)}
+.field textarea{resize:vertical;min-height:88px}
+.field input.invalid,
+.field textarea.invalid{border-color:var(--erro)}
+
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{
+  position:relative;
+}
+.pill input{position:absolute;opacity:0;width:1px;height:1px}
+.pill label{
+  display:block;cursor:pointer;
+  padding:11px 18px;border:1.5px solid var(--linha);border-radius:4px;
+  background:var(--marfim);color:var(--texto);
+  font-size:14.5px;font-weight:400;letter-spacing:normal;
+  transition:border-color .2s,background .2s,color .2s;
+  margin-bottom:0;
+}
+.pill input:checked + label{
+  border-color:var(--dourado);background:var(--verde);color:#fff;font-weight:700;
+}
+.pill input:focus-visible + label{outline:2px solid var(--dourado);outline-offset:2px}
+
+.scale{display:flex;gap:10px}
+.scale .pill{flex:1 1 0}
+.scale .pill label{text-align:center;padding:14px 8px}
+
+.pills.stack{flex-direction:column}
+.pills.stack .pill label{width:100%}
+
+.btn-row{padding:36px 32px 40px}
+@media(max-width:640px){.btn-row{padding:28px 20px 32px}}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;min-height:56px;padding:15px 26px;
+  border:1px solid var(--dourado-claro);border-radius:4px;
+  background:var(--dourado-claro);color:var(--verde-escuro);
+  font-size:15.5px;font-weight:800;letter-spacing:.01em;cursor:pointer;
+  box-shadow:0 12px 28px rgba(183,158,124,.35);
+  transition:background .2s,transform .2s;
+}
+.btn:hover{background:#a68a68;transform:translateY(-2px)}
+.btn:disabled{opacity:.6;cursor:default;transform:none}
+.btn-note{margin-top:16px;font-size:12.5px;color:var(--muted);text-align:center}
+
+.error-banner{
+  display:none;margin:0 32px 24px;padding:14px 16px;border-radius:4px;
+  background:rgba(161,63,63,.08);border:1px solid rgba(161,63,63,.3);
+  color:var(--erro);font-size:13.5px;
+}
+@media(max-width:640px){.error-banner{margin:0 20px 20px}}
+.error-banner.show{display:block}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <img class="logo" src="https://d1yei2z3i6k35z.cloudfront.net/5151357/6a8d8d19679756.07992883_logo_final.png" alt="Finanças com Alma">
+
+  <p class="kicker">Candidatura</p>
+  <h1>A tua <em>Sessão Estratégica</em> de Clareza Financeira</h1>
+  <p class="lead">Já viste o teu arquétipo emocional do dinheiro. Este formulário é o passo seguinte, para quem quer olhar para o padrão de perto, numa sessão comigo. Preenche com calma, sem precisares de já ter todas as respostas.</p>
+
+  <div class="error-banner" id="errorBanner">Falta preencher algum campo obrigatório. Revê o formulário antes de enviares.</div>
+
+  <form class="card" id="candidaturaForm"
+        action="https://docs.google.com/forms/d/e/1FAIpQLScc_nzZBwm77lL6n4q57Qk8KE2WK271d0Y8FIHPb76JQAjgvg/formResponse"
+        method="POST" target="gformFrame" novalidate>
+
+    <section class="group">
+      <h2>Sobre ti</h2>
+      <div class="field">
+        <label for="f-nome">Nome<span class="req">*</span></label>
+        <input type="text" id="f-nome" name="entry.1422655093" required>
+      </div>
+      <div class="field">
+        <label for="f-email">Email<span class="req">*</span></label>
+        <input type="email" id="f-email" name="entry.506357436" required>
+      </div>
+      <div class="field">
+        <label for="f-whatsapp">WhatsApp<span class="req">*</span></label>
+        <input type="text" id="f-whatsapp" name="entry.1699255894" required>
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>O teu arquétipo</h2>
+      <div class="field">
+        <label>Qual foi o teu arquétipo emocional do dinheiro?<span class="req">*</span></label>
+        <div class="pills stack" id="arquetipoPills">
+          <div class="pill"><input type="radio" id="arq-0" name="entry.1185847317" value="A Gastadora" required><label for="arq-0">A Gastadora</label></div>
+          <div class="pill"><input type="radio" id="arq-1" name="entry.1185847317" value="A Controladora"><label for="arq-1">A Controladora</label></div>
+          <div class="pill"><input type="radio" id="arq-2" name="entry.1185847317" value="A Salvadora"><label for="arq-2">A Salvadora</label></div>
+          <div class="pill"><input type="radio" id="arq-3" name="entry.1185847317" value="A Acumuladora"><label for="arq-3">A Acumuladora</label></div>
+          <div class="pill"><input type="radio" id="arq-4" name="entry.1185847317" value="A Sonhadora"><label for="arq-4">A Sonhadora</label></div>
+          <div class="pill"><input type="radio" id="arq-5" name="entry.1185847317" value="A Provedora"><label for="arq-5">A Provedora</label></div>
+          <div class="pill"><input type="radio" id="arq-6" name="entry.1185847317" value="Não sei / não fiz o quiz"><label for="arq-6">Não sei / não fiz o quiz</label></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Identificaste-te com o arquétipo que recebeste?<span class="req">*</span> <span class="opt">(1 = nada, 5 = totalmente)</span></label>
+        <div class="pills scale">
+          <div class="pill"><input type="radio" id="id-1" name="entry.488335314" value="1" required><label for="id-1">1</label></div>
+          <div class="pill"><input type="radio" id="id-2" name="entry.488335314" value="2"><label for="id-2">2</label></div>
+          <div class="pill"><input type="radio" id="id-3" name="entry.488335314" value="3"><label for="id-3">3</label></div>
+          <div class="pill"><input type="radio" id="id-4" name="entry.488335314" value="4"><label for="id-4">4</label></div>
+          <div class="pill"><input type="radio" id="id-5" name="entry.488335314" value="5"><label for="id-5">5</label></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>A tua relação com o dinheiro</h2>
+      <div class="field">
+        <label for="f-desafio">Qual é, hoje, o teu maior desafio na tua relação com o dinheiro?<span class="req">*</span></label>
+        <textarea id="f-desafio" name="entry.1713524160" required></textarea>
+      </div>
+      <div class="field">
+        <label for="f-tentaste">O que já tentaste fazer para resolver isto, antes de chegares aqui? <span class="opt">(opcional)</span></label>
+        <textarea id="f-tentaste" name="entry.1578010646"></textarea>
+      </div>
+      <div class="field">
+        <label for="f-investiste">Já investiste em ti para melhorar esta área, seja em cursos, mentorias ou apoio profissional? Se sim, conta-me o quê. <span class="opt">(opcional)</span></label>
+        <textarea id="f-investiste" name="entry.313018618"></textarea>
+      </div>
+      <div class="field">
+        <label for="f-resolver">O que mais gostavas de resolver na tua relação com o dinheiro, agora? <span class="opt">(opcional)</span></label>
+        <textarea id="f-resolver" name="entry.1876762876"></textarea>
+      </div>
+      <div class="field">
+        <label for="f-disponibilidade">Disponibilidade preferida para a sessão (dias e alturas do dia) <span class="opt">(opcional)</span></label>
+        <input type="text" id="f-disponibilidade" name="entry.1299126646">
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>Prontidão para dar o passo</h2>
+      <div class="field">
+        <label>Estás disposta a investir tempo e dinheiro para resolver isto agora?<span class="req">*</span></label>
+        <div class="pills stack">
+          <div class="pill"><input type="radio" id="disp-0" name="entry.873286281" value="Sim, é uma prioridade para mim" required><label for="disp-0">Sim, é uma prioridade para mim</label></div>
+          <div class="pill"><input type="radio" id="disp-1" name="entry.873286281" value="Ainda não tenho a certeza"><label for="disp-1">Ainda não tenho a certeza</label></div>
+          <div class="pill"><input type="radio" id="disp-2" name="entry.873286281" value="Não, por agora"><label for="disp-2">Não, por agora</label></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Qual a tua capacidade financeira para investires em ti neste momento?<span class="req">*</span></label>
+        <div class="pills stack">
+          <div class="pill"><input type="radio" id="cap-0" name="entry.2125450743" value="Não tenho disponibilidade financeira para investir em mim neste momento" required><label for="cap-0">Não tenho disponibilidade financeira para investir em mim neste momento</label></div>
+          <div class="pill"><input type="radio" id="cap-1" name="entry.2125450743" value="Até 1000€"><label for="cap-1">Até 1000€</label></div>
+          <div class="pill"><input type="radio" id="cap-2" name="entry.2125450743" value="Entre 1000€ e 2000€"><label for="cap-2">Entre 1000€ e 2000€</label></div>
+          <div class="pill"><input type="radio" id="cap-3" name="entry.2125450743" value="Mais de 2000€"><label for="cap-3">Mais de 2000€</label></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>Antes de terminares</h2>
+      <div class="field">
+        <label for="f-comentario">Há mais alguma coisa que queiras partilhar antes da sessão? <span class="opt">(opcional)</span></label>
+        <textarea id="f-comentario" name="entry.485603903"></textarea>
+      </div>
+    </section>
+
+    <div class="btn-row">
+      <button type="submit" class="btn" id="submitBtn"><span id="submitLabel">Enviar candidatura</span> <span aria-hidden="true">→</span></button>
+      <p class="btn-note">Depois de enviares, vais ser encaminhada diretamente para a marcação da tua sessão.</p>
+    </div>
+  </form>
+</div>
+
+<iframe name="gformFrame" style="display:none" aria-hidden="true"></iframe>
+
+<script>
+(function(){
+  var BOOKING_URL = 'https://www.madafinancas.pt/sessao-estrategica-b4987a3b';
+  var ARCHETYPE_LABEL = {
+    gastadora: 'A Gastadora',
+    controladora: 'A Controladora',
+    salvadora: 'A Salvadora',
+    acumuladora: 'A Acumuladora',
+    sonhadora: 'A Sonhadora',
+    provedora: 'A Provedora'
+  };
+
+  var params = new URLSearchParams(window.location.search);
+  var nome = params.get('nome');
+  var whatsapp = params.get('whatsapp');
+  var arquetipo = params.get('arquetipo');
+
+  if (nome) document.getElementById('f-nome').value = nome;
+  if (whatsapp) document.getElementById('f-whatsapp').value = whatsapp;
+  if (arquetipo && ARCHETYPE_LABEL[arquetipo]) {
+    var label = ARCHETYPE_LABEL[arquetipo];
+    var radios = document.querySelectorAll('#arquetipoPills input[type="radio"]');
+    for (var i = 0; i < radios.length; i++) {
+      if (radios[i].value === label) { radios[i].checked = true; break; }
+    }
+  }
+
+  var form = document.getElementById('candidaturaForm');
+  var errorBanner = document.getElementById('errorBanner');
+  var submitBtn = document.getElementById('submitBtn');
+  var submitLabel = document.getElementById('submitLabel');
+  var frame = document.querySelector('iframe[name="gformFrame"]');
+  var submitted = false;
+  var frameLoads = 0;
+
+  function clearInvalid(){
+    var invalids = form.querySelectorAll('.invalid');
+    for (var i = 0; i < invalids.length; i++) invalids[i].classList.remove('invalid');
+  }
+
+  function isFilled(el){
+    if (el.type === 'radio') {
+      var group = form.querySelectorAll('input[name="' + el.name + '"]');
+      for (var i = 0; i < group.length; i++) if (group[i].checked) return true;
+      return false;
+    }
+    return el.value.trim().length > 0;
+  }
+
+  frame.addEventListener('load', function(){
+    frameLoads++;
+    // first load is the frame's initial blank document; the real submission is the next load
+    if (submitted && frameLoads > 1) {
+      window.location.href = BOOKING_URL;
+    }
+  });
+
+  form.addEventListener('submit', function(e){
+    clearInvalid();
+    var required = form.querySelectorAll('[required]');
+    var seenNames = {};
+    var firstInvalid = null;
+    var ok = true;
+
+    for (var i = 0; i < required.length; i++) {
+      var el = required[i];
+      if (el.type === 'radio') {
+        if (seenNames[el.name]) continue;
+        seenNames[el.name] = true;
+      }
+      if (!isFilled(el)) {
+        ok = false;
+        if (el.type === 'radio') {
+          var group = form.querySelectorAll('input[name="' + el.name + '"]');
+          for (var j = 0; j < group.length; j++) {
+            group[j].closest('.pill').querySelector('label').classList.add('invalid');
+          }
+        } else {
+          el.classList.add('invalid');
+        }
+        if (!firstInvalid) firstInvalid = el;
+      }
+    }
+
+    if (!ok) {
+      e.preventDefault();
+      errorBanner.classList.add('show');
+      if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    errorBanner.classList.remove('show');
+    submitted = true;
+    submitBtn.disabled = true;
+    submitLabel.textContent = 'A enviar...';
+    // form submits natively to the hidden iframe; redirect happens on iframe load above
+  });
+})();
+</script>
+</body>
+</html>
