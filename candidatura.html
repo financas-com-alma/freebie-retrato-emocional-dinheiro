@@ -263,10 +263,12 @@ section.group:last-of-type{border-bottom:none}
 
   var params = new URLSearchParams(window.location.search);
   var nome = params.get('nome');
+  var email = params.get('email');
   var whatsapp = params.get('whatsapp');
   var arquetipo = params.get('arquetipo');
 
   if (nome) document.getElementById('f-nome').value = nome;
+  if (email) document.getElementById('f-email').value = email;
   if (whatsapp) document.getElementById('f-whatsapp').value = whatsapp;
   if (arquetipo && ARCHETYPE_LABEL[arquetipo]) {
     var label = ARCHETYPE_LABEL[arquetipo];
