@@ -284,7 +284,15 @@ section.group:last-of-type{border-bottom:none}
   var submitLabel = document.getElementById('submitLabel');
   var frame = document.querySelector('iframe[name="gformFrame"]');
   var submitted = false;
-  var frameLoads = 0;
+  var redirected = false;
+  var redirectTimer = null;
+
+  function goToBooking(){
+    if (redirected) return;
+    redirected = true;
+    if (redirectTimer) clearTimeout(redirectTimer);
+    window.location.href = BOOKING_URL;
+  }
 
   function clearInvalid(){
     var invalids = form.querySelectorAll('.invalid');
@@ -300,11 +308,11 @@ section.group:last-of-type{border-bottom:none}
     return el.value.trim().length > 0;
   }
 
+  // Depois de submeter, qualquer carregamento da iframe (a resposta do Google Forms)
+  // significa que os dados já chegaram, por isso reencaminha de imediato.
   frame.addEventListener('load', function(){
-    frameLoads++;
-    // first load is the frame's initial blank document; the real submission is the next load
-    if (submitted && frameLoads > 1) {
-      window.location.href = BOOKING_URL;
+    if (submitted) {
+      goToBooking();
     }
   });
 
@@ -346,7 +354,11 @@ section.group:last-of-type{border-bottom:none}
     submitted = true;
     submitBtn.disabled = true;
     submitLabel.textContent = 'A enviar...';
-    // form submits natively to the hidden iframe; redirect happens on iframe load above
+    // form submits natively para a iframe escondida; o reencaminhamento acontece
+    // no "load" da iframe acima. Como rede de segurança, caso esse evento não
+    // dispare (por exemplo em ligações mais lentas), reencaminha de qualquer forma
+    // passado tempo suficiente para o POST ter chegado ao Google Forms.
+    redirectTimer = setTimeout(goToBooking, 4000);
   });
 })();
 </script>
